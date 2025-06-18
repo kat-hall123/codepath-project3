@@ -1,6 +1,7 @@
 const { PrismaClient } = require('./generated/prisma')
 const prisma = new PrismaClient()
 
+const cors = require('cors')
 const express = require('express')
 const app = express()
 const PORT = 3000
@@ -10,6 +11,7 @@ app.listen(PORT, () => {
 })
 
 app.use(express.json())
+app.use(cors())
 
 //GET all boards
 app.get('/boards', async (req, res) => {
