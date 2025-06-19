@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 const DashboardPage = () => {
     const [boards, setBoards] = useState([]);
     const [showModal, setShowModal] = useState(false);
+    const [query, setQuery] = useState('');
 
     const fetchBoards = async () => {
         try {
@@ -25,9 +26,16 @@ const DashboardPage = () => {
         fetchBoards();
     }, []);
 
+    const filteredBoards = boards.filter(board => 
+        board.title.toLowerCase().includes(query.toLowerCase())
+    )
+
     return (
         <div className="dashboard-container">
-            <SearchForm />
+            <SearchForm 
+                query={query}
+                setQuery={setQuery}
+            />
             <FilterTags />
             <div className="create-board-form">
                 <button onClick={() => setShowModal(true)}>Create New Board</button>
@@ -43,7 +51,8 @@ const DashboardPage = () => {
                     </div>
                 )}
             </div>
-            <BoardList boards={boards} />
+
+            <BoardList boards={filteredBoards} />
         </div>
     );
 };
