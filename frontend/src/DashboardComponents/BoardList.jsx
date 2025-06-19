@@ -2,15 +2,13 @@ import '../css/BoardList.css';
 
 import BoardCard from './BoardCard';
 
-const BoardList = () => {
+const BoardList = ({ boards }) => {
     return (
         <div className="board-grid">
-            <BoardCard />
-            <BoardCard />
-            <BoardCard />
-            <BoardCard />
+            {boards.map((board) => (
+                <BoardCard key={board.id} board={board} />
+            ))}
         </div>
-        
     )
 }
 
