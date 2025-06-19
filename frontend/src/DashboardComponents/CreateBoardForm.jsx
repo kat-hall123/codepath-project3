@@ -55,12 +55,16 @@ const CreateBoardForm = ({ onBoardCreated }) => {
             />
 
             <label htmlFor="category">Category: </label>
-            <input 
-                type="text"
+            <select
                 name="category"
                 value={formData.category}
                 onChange={handleChange}
-            />
+            >
+                <option value="">Select a category</option>
+                <option value="Thank You">Thank You</option>
+                <option value="Celebration">Celebration</option>
+                <option value="Inspiration">Inspiration</option>
+            </select>
 
             <label htmlFor="author">Author(optional): </label>
             <input 
