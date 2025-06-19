@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 
 const DashboardPage = () => {
     const [boards, setBoards] = useState([]);
+    const [showModal, setShowModal] = useState(false);
 
     const fetchBoards = async () => {
         try {
@@ -16,7 +17,7 @@ const DashboardPage = () => {
             const data = await response.json();
             setBoards(data);
         } catch(error) {
-            console.error('Error fetching boards: ', error)
+            console.error('Error fetching boards: ', error);
         }
     };
 
@@ -28,7 +29,20 @@ const DashboardPage = () => {
         <div className="dashboard-container">
             <SearchForm />
             <FilterTags />
-            <CreateBoardForm />
+            <div className="create-board-form">
+                <button onClick={() => setShowModal(true)}>Create New Board</button>
+                {showModal && (
+                    <div className="modal-overlay">
+                        <div className="modal-content">
+                            <CreateBoardForm onBoardCreated={() => {
+                                fetchBoards();
+                                setShowModal(false);
+                            }} />
+                            <button className="close-button" onClick={() => setShowModal(false)}>Close</button>
+                        </div>
+                    </div>
+                )}
+            </div>
             <BoardList boards={boards} />
         </div>
     );
