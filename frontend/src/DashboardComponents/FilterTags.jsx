@@ -1,3 +1,4 @@
+import '../css/FilterTags.css';
 
 const FilterTags = ({ selectedCategory, setSelectedCategory, setSortByRecent }) => {
     const categories = ['All', 'Celebration', 'Thank you', 'Inspiration'];
@@ -24,7 +25,6 @@ const FilterTags = ({ selectedCategory, setSelectedCategory, setSortByRecent }) 
                 Recent
             </button>
         </div>
-
     )
 }
 

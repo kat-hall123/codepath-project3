@@ -2,6 +2,7 @@ import { useParams, useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
 import CardList from './BoardDetailComponents/CardList';
 import CreateCardForm from './BoardDetailComponents/CreateCardForm';
+import './css/BoardDetailPage.css';
 
 function BoardDetailPage() {
     const { boardId } = useParams();
@@ -51,21 +52,27 @@ function BoardDetailPage() {
 
     return (
         <div>
-            <h1>{boardTitle}</h1>
-
+            <header>
+                <h1>KUDOS BOARD</h1>
+            </header>
+            
             <button onClick={() => navigate('/')}>Back to Dashboard</button>
+            
+            <div className="board-info">
+                <h1>{boardTitle}</h1>
 
-            <button onClick={() => setShowModal(true)}> Create a card</button>
-            {showModal && (
-                <div className="modal-overlay">
-                    <div className="modal-content">
-                        <CreateCardForm boardId={boardId} onCardCreated={handleCardCreated} />
-                        <button onClick={() => setShowModal(false)}>Close</button>
+                <button onClick={() => setShowModal(true)}> Create a card</button>
+                {showModal && (
+                    <div className="modal-overlay">
+                        <div className="modal-content">
+                            <CreateCardForm boardId={boardId} onCardCreated={handleCardCreated} />
+                            <button onClick={() => setShowModal(false)}>Close</button>
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
 
-            <CardList cards={cards} onDelete={handleDeleteCard}/>
+                <CardList cards={cards} onDelete={handleDeleteCard}/>
+            </div>
         </div>
     );
 }

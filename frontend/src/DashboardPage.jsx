@@ -1,10 +1,8 @@
 import './css/DashboardPage.css';
-
 import SearchForm from './DashboardComponents/SearchForm';
 import FilterTags from './DashboardComponents/FilterTags';
 import CreateBoardForm from './DashboardComponents/CreateBoardForm';
 import BoardList from './DashboardComponents/BoardList';
-
 import { useEffect, useState } from 'react';
 
 const DashboardPage = () => {
@@ -57,15 +55,23 @@ const DashboardPage = () => {
 
     return (
         <div className="dashboard-container">
-            <SearchForm 
-                query={query}
-                setQuery={setQuery}
-            />
+            <header>
+                <h1>KUDOS BOARD</h1>
+            </header>
+
+            <div className="search-bar">
+                <SearchForm 
+                    query={query}
+                    setQuery={setQuery}
+                />
+            </div>
             
-            <FilterTags selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} setSortByRecent={setSortByRecent}/>
+            <div className="categories">
+                <FilterTags selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} setSortByRecent={setSortByRecent}/>
+            </div>
             
             <div className="create-board-form">
-                <button onClick={() => setShowModal(true)}>Create New Board</button>
+                <button className="create-board-button" onClick={() => setShowModal(true)}>Create New Board</button>
                 {showModal && (
                     <div className="modal-overlay">
                         <div className="modal-content">
@@ -80,6 +86,10 @@ const DashboardPage = () => {
             </div>
 
             <BoardList boards={sortedBoards} onDelete={handleDeleteBoard}/>
+
+            <footer>
+                Est. 2025
+            </footer>
         </div>
     );
 };

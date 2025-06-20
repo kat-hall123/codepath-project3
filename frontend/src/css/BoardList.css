@@ -1,6 +1,7 @@
 .board-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 16rem));
     gap: 1.5rem; 
     padding: 1rem;
+    margin: 2rem 1rem;
 }

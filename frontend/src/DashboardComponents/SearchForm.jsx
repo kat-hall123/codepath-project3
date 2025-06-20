@@ -1,3 +1,4 @@
+import '../css/SearchForm.css';
 
 const SearchForm = ({ query, setQuery }) => {
     const handleSubmit = (event) => {
@@ -16,8 +17,8 @@ const SearchForm = ({ query, setQuery }) => {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
             />
-            <button type="submit">Search</button>
-            <button type="button" onClick={handleClear}>Clear</button>
+            <button className="search-button" type="submit">Search</button>
+            <button className="search-button" type="button" onClick={handleClear}>Clear</button>
         </form>
     )
 }

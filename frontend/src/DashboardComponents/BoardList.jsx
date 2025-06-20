@@ -1,5 +1,4 @@
 import '../css/BoardList.css';
-
 import BoardCard from './BoardCard';
 
 const BoardList = ({ boards, onDelete }) => {
