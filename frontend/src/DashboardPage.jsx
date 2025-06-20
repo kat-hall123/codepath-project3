@@ -33,9 +33,8 @@ const DashboardPage = () => {
         return matchesQuery && matchesCategory;
     });
 
-    const sortedBoards = [...filteredBoards].sort((a, b) =>
-        sortByRecent ? b.id - a.id : a.id - b.id
-    );
+    const sortedBoards = sortByRecent ? [...filteredBoards].sort((a, b) => b.id - a.id).slice(0, 6) 
+                                        : [...filteredBoards].sort((a, b) => a.id - b.id);
 
     const handleDeleteBoard = async (boardId) => {
         try {
