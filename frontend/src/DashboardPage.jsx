@@ -28,7 +28,6 @@ const DashboardPage = () => {
         fetchBoards();
     }, []);
 
-    //FIX RECENT (needs to be all the board sorted, it's not a category)
     const filteredBoards = boards.filter(board => {
         const matchesQuery = board.title.toLowerCase().includes(query.toLowerCase());
         const matchesCategory = selectedCategory === 'All' || board.category === selectedCategory;
@@ -40,13 +39,31 @@ const DashboardPage = () => {
         sortByRecent ? b.id - a.id : a.id - b.id
     );
 
+    const handleDeleteBoard = async (boardId) => {
+        try {
+            const response = await fetch(`http://localhost:3000/boards/${boardId}`, {
+                method: 'DELETE'
+            });
+
+            if (response.ok) {
+                setBoards(prev => prev.filter(board => board.id !== boardId));
+            } else {
+                console.error('Failed to delete board');
+            }
+        } catch(error) {
+            console.error('Error deleting board: ', error);
+        }
+    } 
+
     return (
         <div className="dashboard-container">
             <SearchForm 
                 query={query}
                 setQuery={setQuery}
             />
+            
             <FilterTags selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} setSortByRecent={setSortByRecent}/>
+            
             <div className="create-board-form">
                 <button onClick={() => setShowModal(true)}>Create New Board</button>
                 {showModal && (
@@ -62,7 +79,7 @@ const DashboardPage = () => {
                 )}
             </div>
 
-            <BoardList boards={sortedBoards} />
+            <BoardList boards={sortedBoards} onDelete={handleDeleteBoard}/>
         </div>
     );
 };
