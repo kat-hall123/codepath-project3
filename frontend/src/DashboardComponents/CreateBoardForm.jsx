@@ -1,5 +1,4 @@
 import '../css/CreateBoardForm.css';
-
 import { useState } from 'react';
 
 const CreateBoardForm = ({ onBoardCreated }) => {
@@ -13,7 +12,7 @@ const CreateBoardForm = ({ onBoardCreated }) => {
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
-        //adds the new value to the existing form data 
+        // adds the new value to the existing form data 
         setFormData((prev) => ({ ...prev, [name]: value}))
     }
 
@@ -33,7 +32,7 @@ const CreateBoardForm = ({ onBoardCreated }) => {
             })
 
             if(response.ok) {
-                //clear form, then refresh dashboard 
+                // clear form, then refresh dashboard 
                 setFormData({ title: '', category: '', author: '', imageUrl: ''})
                 onBoardCreated()
             } else{
@@ -46,42 +45,49 @@ const CreateBoardForm = ({ onBoardCreated }) => {
     
     return (
         <form onSubmit={handleSubmit} className="create-board-form">
-            <label htmlFor="title">Title: </label>
-            <input 
-                type="text"
-                name="title"
-                value={formData.title}
-                onChange={handleChange}
-            />
+            <h3>Create a board: </h3>
 
-            <label htmlFor="category">Category: </label>
-            <select
-                name="category"
-                value={formData.category}
-                onChange={handleChange}
-            >
-                <option value="">Select a category</option>
-                <option value="Thank You">Thank You</option>
-                <option value="Celebration">Celebration</option>
-                <option value="Inspiration">Inspiration</option>
-            </select>
+            <div className="questions">
+                <label htmlFor="title">Title: </label>
+                <input 
+                    type="text"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleChange}
+                />
 
-            <label htmlFor="author">Author(optional): </label>
-            <input 
-                type="text"
-                name="author"
-                value={formData.author}
-                onChange={handleChange}
-            />
+                <div className="dropdown">
+                    <label htmlFor="category">Category: </label>
+                    <select
+                        name="category"
+                        value={formData.category}
+                        onChange={handleChange}
+                        className="category"
+                    >
+                        <option value="">Select a category</option>
+                        <option value="Thank You">Thank You</option>
+                        <option value="Celebration">Celebration</option>
+                        <option value="Inspiration">Inspiration</option>
+                    </select>
+                </div>
 
-            <label htmlFor="imageUrl">Image URL: </label>
-            <input
-                type="text"
-                name="imageUrl"
-                value={formData.imageUrl}
-                onChange={handleChange}
-            />
+                <label htmlFor="author">Author(optional): </label>
+                <input 
+                    type="text"
+                    name="author"
+                    value={formData.author}
+                    onChange={handleChange}
+                />
 
+                <label htmlFor="imageUrl">Image Address: </label>
+                <input
+                    type="text"
+                    name="imageUrl"
+                    value={formData.imageUrl}
+                    onChange={handleChange}
+                />
+            </div>
+            
             <button type="submit">Create Board</button>
         </form>
     )

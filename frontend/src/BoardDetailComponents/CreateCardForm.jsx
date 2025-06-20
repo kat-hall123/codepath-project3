@@ -1,5 +1,4 @@
 import '../css/CreateCardForm.css';
-
 import { useState } from 'react';
 
 function CreateCardForm({ boardId, onCardCreated }) {
@@ -55,7 +54,7 @@ function CreateCardForm({ boardId, onCardCreated }) {
     };
 
     return (
-        <>
+        <div className="create-card">
             <h3>Create a card: </h3>
             <form onSubmit={handleSubmit} className="create-card-form">
                 <label htmlFor="title">Title: </label>
@@ -66,7 +65,7 @@ function CreateCardForm({ boardId, onCardCreated }) {
                     onChange={handleChange} 
                     required 
                 />
-
+    
                 <label htmlFor="message">Message: </label>
                 <input 
                     type="text"
@@ -92,8 +91,8 @@ function CreateCardForm({ boardId, onCardCreated }) {
                     onChange={handleChange} 
                 />
 
+                <label htmlFor="gifSearch">Search for GIFs: </label>
                 <div>
-                    <label htmlFor="gifSearch">Search for GIFs: </label>
                     <input 
                         id="gifSearch"
                         type="text" 
@@ -116,8 +115,7 @@ function CreateCardForm({ boardId, onCardCreated }) {
 
                 <button type="submit">Add Card</button>
             </form>
-        </>
-        
+        </div>
     );
 }
 

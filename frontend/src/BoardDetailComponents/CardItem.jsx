@@ -30,8 +30,10 @@ function CardItem({ card, onDelete }) {
             <p>{card.message}</p>
             <img src={card.gifUrl} alt="GIF" className="card-gif" />
             {card.author && <p>{card.author}</p>}
-            <button onClick={handleUpvote}>Upvote ({upvotes})</button>
-            <button onClick={handleDelete}>Delete</button>
+            <div>
+                <button onClick={handleUpvote}>Upvote ({upvotes})</button>
+                <button onClick={handleDelete}>Delete</button>
+            </div>
         </div>
     )
 }
