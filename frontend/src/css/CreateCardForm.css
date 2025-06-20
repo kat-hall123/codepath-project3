@@ -1,0 +1,10 @@
+.create-card-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.gif {
+    cursor: pointer;
+    width: 6em;
+    margin: 0.3em;
+}
