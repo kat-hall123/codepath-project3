@@ -14,7 +14,7 @@ const DashboardPage = () => {
 
     const fetchBoards = async () => {
         try {
-            const response = await fetch('http://localhost:3000/boards');
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/boards`);
             const data = await response.json();
             setBoards(data);
         } catch(error) {
@@ -38,7 +38,7 @@ const DashboardPage = () => {
 
     const handleDeleteBoard = async (boardId) => {
         try {
-            const response = await fetch(`http://localhost:3000/boards/${boardId}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/boards/${boardId}`, {
                 method: 'DELETE'
             });
 

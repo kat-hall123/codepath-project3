@@ -6,7 +6,7 @@ function CardItem({ card, onDelete }) {
     
     const handleUpvote = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/boards/${card.boardId}/cards/${card.id}/upvote`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/boards/${card.boardId}/cards/${card.id}/upvote`, {
                 method: 'PUT'
             });
             

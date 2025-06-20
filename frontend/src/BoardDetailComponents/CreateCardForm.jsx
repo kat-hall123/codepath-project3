@@ -21,7 +21,7 @@ function CreateCardForm({ boardId, onCardCreated }) {
         event.preventDefault();
 
         try {
-            const response = await fetch(`http://localhost:3000/boards/${boardId}/cards`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/boards/${boardId}/cards`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

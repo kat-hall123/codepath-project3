@@ -13,11 +13,11 @@ function BoardDetailPage() {
 
     const fetchCards = async () => {
         try {
-            const boardResponse = await fetch(`http://localhost:3000/boards/${boardId}`);
+            const boardResponse = await fetch(`${import.meta.env.VITE_API_URL}/boards/${boardId}`);
             const boardData = await boardResponse.json();
             setBoardTitle(boardData.title);
 
-            const cardsResponse = await fetch(`http://localhost:3000/boards/${boardId}/cards`);
+            const cardsResponse = await fetch(`${import.meta.env.VITE_API_URL}/boards/${boardId}/cards`);
             const cardsData = await cardsResponse.json();
             setCards(cardsData);
         } catch(error) {
@@ -31,7 +31,7 @@ function BoardDetailPage() {
 
     const handleDeleteCard = async (cardId) => {
         try {
-            const response = await fetch(`http://localhost:3000/boards/${boardId}/cards/${cardId}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/boards/${boardId}/cards/${cardId}`, {
                 method: 'DELETE'
             })
 

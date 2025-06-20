@@ -25,7 +25,7 @@ const CreateBoardForm = ({ onBoardCreated }) => {
         }
 
         try {
-            const response = await fetch('http://localhost:3000/boards', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/boards`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
