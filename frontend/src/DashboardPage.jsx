@@ -11,6 +11,8 @@ const DashboardPage = () => {
     const [boards, setBoards] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [query, setQuery] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('All');
+    const [sortByRecent, setSortByRecent] = useState(false);
 
     const fetchBoards = async () => {
         try {
@@ -26,9 +28,17 @@ const DashboardPage = () => {
         fetchBoards();
     }, []);
 
-    const filteredBoards = boards.filter(board => 
-        board.title.toLowerCase().includes(query.toLowerCase())
-    )
+    //FIX RECENT (needs to be all the board sorted, it's not a category)
+    const filteredBoards = boards.filter(board => {
+        const matchesQuery = board.title.toLowerCase().includes(query.toLowerCase());
+        const matchesCategory = selectedCategory === 'All' || board.category === selectedCategory;
+
+        return matchesQuery && matchesCategory;
+    });
+
+    const sortedBoards = [...filteredBoards].sort((a, b) =>
+        sortByRecent ? b.id - a.id : a.id - b.id
+    );
 
     return (
         <div className="dashboard-container">
@@ -36,7 +46,7 @@ const DashboardPage = () => {
                 query={query}
                 setQuery={setQuery}
             />
-            <FilterTags />
+            <FilterTags selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} setSortByRecent={setSortByRecent}/>
             <div className="create-board-form">
                 <button onClick={() => setShowModal(true)}>Create New Board</button>
                 {showModal && (
@@ -52,7 +62,7 @@ const DashboardPage = () => {
                 )}
             </div>
 
-            <BoardList boards={filteredBoards} />
+            <BoardList boards={sortedBoards} />
         </div>
     );
 };
