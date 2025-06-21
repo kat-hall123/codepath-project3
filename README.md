@@ -136,13 +136,13 @@ Deployed Application (**required**): [Kudos Board Deployed Site](https://codepat
 ### Walkthrough Video
 
 <div>
-    <a href="https://www.loom.com/share/f9edf04b653542f5b3cffaf2c5549e75">
-      <p>Comparison View - 20 June 2025 - Watch Video</p>
+    <a href="https://www.loom.com/share/a29cfcf0938a4ad587bc2721f744eb5c">
+      <p>Vite + React - 20 June 2025 - Watch Video</p>
     </a>
-    <a href="https://www.loom.com/share/f9edf04b653542f5b3cffaf2c5549e75">
-      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/f9edf04b653542f5b3cffaf2c5549e75-e0ddbadab1e9de2d-full-play.gif">
+    <a href="https://www.loom.com/share/a29cfcf0938a4ad587bc2721f744eb5c">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/a29cfcf0938a4ad587bc2721f744eb5c-9604595619398354-full-play.gif">
     </a>
-  </div>
+</div>
 
 ### Reflection
 
